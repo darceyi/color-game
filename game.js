@@ -13,6 +13,8 @@ var pickedColor = colors[3]; //placeholder -- will be random
 
 var colorDisplay = document.getElementById("color-display");
 
+var messageDisplay = document.getElementById("message");
+
 colorDisplay.textContent = pickedColor; //placeholder
 
 for(var i = 0; i < squares.length; i++){
@@ -22,10 +24,20 @@ for(var i = 0; i < squares.length; i++){
 		var clickedColor = this.style.background;
 		//compare color to pickedColor
 		if(clickedColor === pickedColor){
-			alert("correct!");
+			messageDisplay.textContent = "Correct!"
+			changeColors(clickedColor);
 		} else {
 			// squares[i].style.background = "black";
-			alert("wrong!");
+			this.style.background = "#232323";
+			messageDisplay.textContent = "Try Again";
 		}
 	});
+}
+
+function changeColors(color) {
+	//loop thry all squares
+	for(var i = 0; i < squares.length; i++){
+	//chnage each color to match given color
+		squares[i].style.background = color;
+	}
 }
